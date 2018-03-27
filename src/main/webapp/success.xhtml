@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><h:outputText value="#{label.success}"/></title>
+<link href="css/style.css" rel="stylesheet" style="text/css" media="screen"/>
+<style>
+ .err{color: red;}
+</style>
+</h:head>
+<h:body>
+<div id="header">
+ <h2><h:outputLabel value="Correct answer" style="margin-left: 45%; margin-right: 40%"/></h2>
+</div>
+<f:view locale="#{mBean.locale}">
+ <h:form>
+ <h:outputLabel value="#{label.quizScore}" for="score" style="margin-left: auto">
+  <h:outputLabel value="#{Quiz.score}" id="score"/>
+ </h:outputLabel>
+ <fieldset>
+  <legend><h:outputText value="#{label.answer}"/></legend>
+ <center> 
+    <h:outputLabel value="#{Quiz.question}"/>
+    <h:inputText value="#{Quiz.response}" id="input">
+    <f:validator for="input" validatorId="quizValidator"/>
+    <f:ajax event="blur" execute="@this" render="message"/>
+    </h:inputText>
+    <h:commandButton value="#{label.btnOK}" action="#{Quiz.Answer}"/>
+   <h:panelGrid columns="1">
+    <h:message for="input" id="message" errorClass="err"/></h:panelGrid>
+ </center>
+<h:outputLabel value="#{label.questionLeft}" for="questionNumb"> 
+ <h:outputLabel value="#{Quiz.numberofQuestions}" id="questionNumb"/>
+</h:outputLabel>
+ </fieldset>
+ </h:form>
+</f:view>
+</h:body>
+</html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+ xmlns:f="http://xmlns.jcp.org/jsf/core"
+ xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="css/style.css" rel="stylesheet" style="text/css" media="screen"/>
+<title><h:outputText value="#{label.newUser}"/></title>
+<style>
+ .info{color: blue}
+ .warn{color: orange}
+ .err{color: red}
+</style>
+</h:head>
+<h:body>
+ <f:view locale="#{mBean.locale}">
+  <h:form id="insertForm" enctype="multipart/form-data">
+     <h:link outcome="administration" value="toAdministration"/>
+  <center>
+   <div id="header"><h2><h:outputLabel value="#{label.newUser}"/></h2></div>
+   
+   <h:panelGrid columns="3">
+        <h:outputLabel for="userName" value="#{label.userName}"/>
+        <h:inputText id="userName" value="#{mBean.userName}" size="25">
+         <f:validator validatorId="nameValidator" for="userName"/>
+        </h:inputText>
+        <h:message for="userName" id="nameMessage" infoClass="info" 
+                                                   errorClass="err" 
+                                                   warnClass="warn"/>
+
+        <h:outputLabel for="email" value="#{label.email}"/>
+        <h:inputText id="email" value="#{mBean.email}" size="25">
+         <f:validator validatorId="emailValidator" for="email"/>
+            </h:inputText>
+        <h:message for="email" id="emailMessage" infoClass="info" 
+                                                  errorClass="err" 
+                                                  warnClass="warn"/>
+
+        <h:outputLabel for="password" value="#{label.password}"/>
+        <h:inputSecret id="password" value="#{mBean.password}" size="26">
+         <f:validator validatorId="passValidator" for="password"/>
+         <f:attribute name="confirm" value="#{confirm}"/>
+        </h:inputSecret>
+        <h:message for="password" id="passMessage" infoClass="info" 
+                                                   errorClass="err" 
+                                                   warnClass="warn"/>
+
+         <h:outputLabel for="confirm" value="#{label.confirmPass}"/>
+         <h:inputSecret id="confirm" binding="#{confirm}" size="26" required="true" 
+                                                                    requiredMessage="#{label.confirmPass}">
+         </h:inputSecret>
+         <h:message for="confirm" id="confMessage" infoClass="info" 
+                                                   errorClass="err" 
+                                                   warnClass="warn"/>
+
+         <h:outputLabel for="file" value="#{label.file}"/>
+         <h:inputFile id="file" size="25" value="#{mBean.file}">
+             <f:validator validatorId="fileValidator"/>
+         </h:inputFile>
+         <h:message for="file" id="message" infoClass="info" 
+                                            errorClass="err" 
+                                            warnClass="warn"/>
+
+        <h:commandButton id="button" value="#{label.btnOK}" action="#{mBean.addUser(mBean)}">
+        </h:commandButton>
+        <h:message for="button" style="color: green"/>
+   </h:panelGrid>
+  </center>
+  </h:form>
+ </f:view>
+</h:body>
+</html>

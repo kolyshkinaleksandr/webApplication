@@ -1,0 +1,41 @@
+*~
+#Project specific excludes
+tomcat
+#OS
+.DS_Store
+.faces-config.xml.jsfdia
+MANIFEST.MF
+#Binaries
+*.iso
+*.rar
+*.tar
+*.zip
+*.war
+*.class
+*.jar
+*.log
+*.sqlite3
+#Maven
+target/
+#Eclipse project file
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.classpath
+.project
+.factorypath
+.settings/
+.recommenders
+#Misc
+.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag
+RemoteSystemsTempFiles
+Starting Workspace/.metadata/

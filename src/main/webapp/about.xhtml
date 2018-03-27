@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>About</title>
+<link href="css/style.css" rel="stylesheet" style="text/css" media="screen"/>
+</h:head>
+<body>
+  <f:view locale="#{mBean.locale}">
+   <h:form>
+
+   <p class="head">Application issues:</p>
+   <ul>
+    <li> 1.Choose language.</li>
+    <li> 2.View 2 picture sliders: first automatic with left and right controll buttons, second slider is manual with active dots, which you can press and control left-right buttons.</li>
+    <li> 3.Currency conversion. Convert Great Britain pound, Euro, US dollar or Russian rubl to Ukrainian gryvna.</li>
+    <li> 4.User registration. Enter user's registration information, after successful registration user receives welcome email on specified mailbox.</li> 
+    <li> 5.User log in. You can enter user or administrator account. Enter your user name and password- to access user's page. User can go through quiz from his/her page. 
+           Enter user name: Kolyshkin and password: 12345- to access administrator's page. You can view all registerd users here and also add new users, edit, delete any user.</li>
+   </ul>
+ 
+  <h:panelGrid columns="1" style="margin: right">
+    <h:commandLink value="#{label.signUp}" action="signUp"/> 
+    <h:commandLink value="#{label.logIn}" action="logIn"/>   
+    <h:commandLink value="#{label.home}" action="home"/> </h:panelGrid>    
+</h:form>
+  </f:view>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Home</title>
+<link href="css/style.css" rel="stylesheet" style="text/css" media="screen"/>
+<link href="css/newStyle.css" rel="stylesheet" style="text/css" media="screen"/>
+<script src="scripts/jquery-3.0.0.js"/>
+<script src="scripts/picSlider.js"/>
+<script src="scripts/newSlider.js"/>
+<style>
+ .info{color: blue;}
+ .err{color: red;}
+</style>
+</h:head>
+<h:body>
+ <f:view locale="#{mBean.locale}">
+  <h:form>
+
+  <center>
+    <div id="header">                                  
+     <h:selectOneRadio value="#{mBean.language}" onclick="submit()" immediate="true">
+      <f:selectItems value="#{mBean.languages}"/>
+     </h:selectOneRadio>
+       <h3><h:outputLabel value="#{label.greeting}"/></h3>
+                 <div id="menu_wrapper">   
+             <ul id="nav">               
+               <li><h:commandLink value="#{label.signup}" action="#{mBean.signUp}"/></li>                          
+               <li><h:commandLink value="#{label.login}" action="#{mBean.logIn}"/></li>
+               <li><h:commandLink value="#{label.about}" action= "about"/></li>
+               <li><h:commandLink value="#{label.contact}" action="index"/></li>
+             </ul>
+          </div>                
+    </div>
+
+ <div id="slider">
+  <a class="next"> &#10097; </a>
+  <a class="prev"> &#10096; </a>
+  <ul>
+     <li><img src="images/cloud.jpg" alt="pic1" /></li>
+     <li><img src="images/pic-1.jpg" alt="pic2" /></li>
+     <li><img src="images/pic-2.jpg" alt="pic3" /></li>
+     <li><img src="images/pic-3.jpg" alt="pic4" /></li>
+     <li><img src="images/pic-4.jpg" alt="pic5" /></li>
+     <li><img src="images/pic-5.jpg" alt="pic6" /></li>
+     <li><img src="images/pic-6.jpg" alt="pic7" /></li>
+     <li><img src="images/pic-7.jpg" alt="pic8" /></li>
+     <li><img src="images/pic-8.jpg" alt="pic9" /></li>
+     <li><img src="images/css.jpg" alt="pic10" /></li>
+  </ul>
+ </div>
+ <br />
+ </center>
+ </h:form>
+ 
+<fieldset><legend><h:outputLabel value="#{label.convert}"/></legend>
+<center>
+ <h:form id="converter">
+ <h:outputLabel value="#{label.amount}"/>
+ <h:selectOneMenu value="#{converter.currency}" id="currency">
+  <f:selectItems value="#{converter.items.entrySet()}" var="entry" itemValue="#{entry.value}" itemLabel="#{entry.key}"/>
+ </h:selectOneMenu>
+ <h:inputText value="#{converter.value}" id="amount" required="true" requiredMessage="#{label.reqMessage}"
+                                                                        converterMessage="#{label.convMessage}">
+                                                                      <f:validateLongRange minimum="0"/>
+                                                                      <f:validateRequired for="amount"/>
+ </h:inputText>
+ <h:commandButton value="#{label.btnOK}">
+  <f:ajax execute="currency amount" render="result amountMes"/>
+ </h:commandButton>
+ <h:panelGrid columns="1">
+  <h:outputLabel id="result" value="#{converter.showConversion}"/> 
+  <h:message for="amount" id="amountMes" errorClass="err"
+                                         infoClass="info"/>
+  </h:panelGrid>                                     
+</h:form></center></fieldset>
+</f:view>
+<br/>
+<div class="container">
+       <div class="slides fade">
+        <div class="imgNumber">1/4</div>
+        <img src="images/img-1.jpg" alt="pic-1" style="width: 100%"/>
+        <div class="imgText">Caption One</div>      
+       </div>
+
+       <div class="slides fade">
+        <div class="imgNumber">2/4</div>
+        <img src="images/img-3.png" alt="pic-2" style="width: 100%"/>
+        <div class="imgText">Caption Two</div>     
+       </div>
+       
+       <div class="slides fade">
+        <div class="imgNumber">3/4</div>
+        <img src="images/img-4.jpg" alt="pic-3" style="width: 100%"/>
+        <div class="imgText">Caption Three</div>
+       </div>
+       
+       <div class="slides fade">
+        <div class="imgNumber">4/4</div>
+        <img src="images/image.png" alt="pic-4" style="width: 100%"/>
+        <div class="imgText">Caption Four</div>
+       </div>
+       
+       <a class="Prev" >&#10094;</a>
+       <a class="Next" >&#10095;</a>
+      </div>
+    <div style="text-align: center">
+     <span class="dot" id="one" onclick="currentSlide(1)"></span>
+     <span class="dot" id="two" onclick="currentSlide(2)"></span>
+     <span class="dot" id="three" onclick="currentSlide(3)"></span>
+     <span class="dot" id="four" onclick="currentSlide(4)"></span>
+    </div>
+</h:body>
+</html>

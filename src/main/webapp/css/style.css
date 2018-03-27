@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+#styleLabel{
+	font-family: Raleway;
+}
+
+p{color: white;}
+p.head{
+  display: table;
+  margin: auto;
+  background-color: #f06060;
+  border-width: 4px;
+  border-style: outset;
+  border-color: #9fd1ff;
+  padding: 5px 8px;
+  letter-spacing: -.025em;
+}
+
+#header{
+	    background-color: #f06060;
+        padding: 22px;
+        width: 100%;
+        height: auto;
+        }
+
+#menu_wrapper{float: right;
+        margin: -35px;
+	    padding-right: 125px;
+          }       
+#nav{   
+	    list-style: none;
+        padding: 0px;
+        text-align: left;
+        display: compact;
+          }
+
+#nav.vertical li{
+	    display: list-item;
+        line-height: 40px;
+          }
+#nav li{
+	    display: inline-block;
+        padding-right: 15px;
+          }   
+#nav li:last-child{
+	    padding-right: 0px;
+	      }           
+	                                
+/*Slider*/
+/*The dots/bullets/ indicators*/
+.dot{
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #aaa;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+.dot:hover{
+	background-color: #dbdb00;
+}
+#slider{
+	position: relative;
+	overflow: hidden;
+	margin: 10px auto 0 auto;
+	border-radius: 5px;
+}                      
+#slider ul{
+	position: relative;
+	margin: 0; padding: 0;
+	height: 200px;
+	list-style: none;
+}   
+#slider ul li{
+	position: relative;
+	display: block;
+	float: left;
+	margin: 0; padding: 0;
+	width: 1000px; height: 450px;
+	background: #ccc;
+	text-align: center;
+	line-height: 450px;
+}
+a.prev, a.next{
+	position: absolute;
+	top: 40%;
+	z-index: 999;
+	display: block;
+	padding: 4% 3%;
+	width: auto; height: auto;
+	background: #2a2a2a;
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
+	opacity: 0.8;
+	cursor: pointer;
+}
+a.prev:hover, a.next:hover{
+	opacity: 1;
+	-webkit-transition: all 0.2s ease;
+}
+a.prev{
+	border-radius: 0 2px 2px 0;
+}
+a.next{
+	right: 0;
+	border-radius: 2px 0 0 2px;
+}
+.slider_option{
+	position: relative;
+	margin: 10px auto;
+	width: 160px;
+	font-size: 18px;
+}
+
+/* Administration page table */
+.bean-table{
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+.bean-table-header{
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+.bean-table-odd-row{
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;
+}
+.bean-table-even-row{
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+}

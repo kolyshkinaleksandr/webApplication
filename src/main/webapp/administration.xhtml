@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><h:outputText value="#{label.admin}"/></title>
+<link href="css/style.css" rel="stylesheet" style="text/css" media="screen"/>
+</h:head>
+<h:body>
+<center>
+<f:view locale="#{mBean.locale}">
+ <h:form id="adminForm">
+  <div id="header">
+     <h2><h:outputLabel value="#{label.admin}"/> </h2>
+   </div> 
+      <h:message for="table"></h:message>
+    <br></br>
+   <h:dataTable value="#{mBean.allUsers}" var="retData" styleClass="bean-table" headerClass="bean-table-header" 
+                                                          rowClasses="bean-table-odd-row,bean-table-even-row" id="table">
+  <f:facet name="header">
+     <h:outputText value="#{label.tableHead}"/>
+  </f:facet>
+   <h:column>
+     <f:facet name="header">
+      <h:outputText value="#{label.id}"></h:outputText>
+     </f:facet>
+     <h:outputText value="#{retData.id}" id="head"></h:outputText>   
+   </h:column>
+   
+    <h:column>
+      <f:facet name="header">
+       <h:outputText value="#{label.userName}"/>
+      </f:facet>
+      <h:outputText value="#{retData.userName}"></h:outputText>      
+    </h:column>
+    
+    <h:column>
+      <f:facet name="header">
+       <h:outputText value="#{label.email}"/>
+      </f:facet>
+      <h:outputText value="#{retData.email}"></h:outputText>
+    </h:column>
+    
+     <h:column>
+      <f:facet name="header">
+       <h:outputText value="#{label.password}"/>
+      </f:facet>
+      <h:outputText value="#{retData.password}"></h:outputText>
+     </h:column>
+     
+     <h:column>
+       <f:facet name="header">
+        <h:outputText value="#{label.file}"/>
+       </f:facet>
+       <h:outputLink value="RetreiveImage?Id=#{retData.id}" target="_blank">
+       <h:graphicImage value="RetreiveImage?Id=#{retData.id}" width="50" height="75"/>
+       </h:outputLink>
+     </h:column> 
+            
+     <h:column>
+      <f:facet name="header">
+       <h:outputText value="#{label.dateTime}"/>
+      </f:facet>
+      <h:outputText value="#{retData.timeStamp}"></h:outputText>
+     </h:column>
+     
+     <h:column>
+      <f:facet name="header">
+       <h:outputText value="Action"></h:outputText>
+      </f:facet>
+      <h:commandButton id="buttonDel" value="#{label.btnDel}" action="#{mBean.deleteUser(retData.id)}"></h:commandButton>
+         <h:message for="buttonDel"></h:message>  
+     </h:column>
+     
+     <h:column>
+      <f:facet name="header">
+       <h:outputText value="Action"></h:outputText>
+      </f:facet>
+      <h:commandButton id="buttonEdit" value="#{label.btnEdit}" action="#{mBean.editUser(retData.id)}"></h:commandButton>
+     </h:column>
+   </h:dataTable>          
+
+      <h:commandButton id="buttonAdd" value="#{label.btnAdd}" action="insert" style="margin: -15px;"></h:commandButton>
+       <h:message for="buttonAdd"></h:message>
+ </h:form>
+</f:view>
+ </center>
+</h:body>
+</html>

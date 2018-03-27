@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><h:outputText value="#{label.login}"/></title>
+<link href="css/style.css" rel="stylesheet" style="text/css" media="screen"/>
+<style>
+  .err{color: red}
+</style>
+</h:head>
+<h:body>
+ <center>
+  <f:view locale="#{mBean.locale}">
+   <h:form id="loginForm">
+   <div id="header">
+     <h2><h:outputLabel value="#{label.login}"/></h2>
+   </div>     <h:link value="#{label.signupRedirect}" outcome="signUp" style="margin-left: 70%"/>
+    <h:panelGrid columns="3">
+     
+      <h:outputLabel value="#{label.name}"/>
+      <h:inputText id="userName" value="#{mBean.userName}" size="25">
+      <f:validator validatorId="nameValidator"/>
+     <f:ajax event="blur" execute="@this" render="error"/>
+      </h:inputText>
+      <h:message for="userName" id="error" errorClass="err"/>
+
+       <h:outputText value="#{label.password}"/>
+       <h:inputSecret id="password" value="#{mBean.password}" size="26">
+       <f:validator validatorId="nameValidator"/>
+      <f:ajax event="blur" execute="@this" render="passError"/>
+       </h:inputSecret>
+       <h:message for="password" id="passError" errorClass="err"/>
+       
+       <h:commandButton id="button" value="#{label.btnLogIn}" action="#{mBean.checkUser(mBean.userName, mBean.password, mBean)}" style="color: green"/>
+    </h:panelGrid>
+   </h:form>
+  </f:view>
+ </center>
+</h:body>
+</html>
