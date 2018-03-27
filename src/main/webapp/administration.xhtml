@@ -84,6 +84,12 @@
 
       <h:commandButton id="buttonAdd" value="#{label.btnAdd}" action="insert" style="margin: -15px;"></h:commandButton>
        <h:message for="buttonAdd"></h:message>
+       <br></br>
+       <h:panelGrid columns="1" style="margin-left: 70%">
+        <h:link outcome="home" value="#{label.home}"/>
+        <h:link outcome="user" value="#{label.userPage}"/>
+        <h:link outcome="logIn" value="#{label.logIn}"/>
+        <h:link outcome="signUp" value="#{label.signUp}"/></h:panelGrid>
  </h:form>
 </f:view>
  </center>

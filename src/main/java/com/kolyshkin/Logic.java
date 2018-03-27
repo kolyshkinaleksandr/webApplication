@@ -18,6 +18,7 @@ import java.util.Properties;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.mail.Address;
 import javax.mail.Authenticator;
@@ -352,4 +353,9 @@ public class Logic implements Serializable{
 				return new PasswordAuthentication(mail, pass);
 			}
 	  }
+
+		 public void redirect() throws IOException{
+			 ExternalContext exContext= FacesContext.getCurrentInstance().getExternalContext();
+			 exContext.redirect("https://drive.google.com/uc?export=view&id=1V9yzBY66jwFLoFFLuLiFblFksu-6qHkb");
+		 }
 }

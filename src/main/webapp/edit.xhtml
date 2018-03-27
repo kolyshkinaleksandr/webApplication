@@ -31,8 +31,8 @@
    <h:message for="password"/>
    
    <h:outputLabel for="file" value="#{label.file}"/> 
-       <h:outputLink value="RetreiveImage?Id=#{retData.id}" target="_blank">
-       <h:graphicImage value="RetreiveImage?Id=#{retData.id}" width="50" height="75"/>
+       <h:outputLink value="RetreiveImage?Id=#{mBean.id}" target="_blank">
+       <h:graphicImage value="RetreiveImage?Id=#{mBean.id}" width="50" height="75"/>
        </h:outputLink>
  </center>
   <h:commandButton id="updateBtn" value="Update" action="#{mBean.updateUser(mBean)}"></h:commandButton>
