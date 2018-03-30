@@ -13,7 +13,6 @@
 <center>
  <div id="header"><h2><h:outputText value="#{label.edit}"/></h2></div>
  <h:panelGrid columns="3">
- <center>
     <h:outputLabel for="Id" value="Id"/>
      <h:inputText id="Id" value="#{mBean.id}"></h:inputText>
     <h:message for="Id"/>
@@ -31,14 +30,22 @@
    <h:message for="password"/>
    
    <h:outputLabel for="file" value="#{label.file}"/> 
-       <h:outputLink value="RetreiveImage?Id=#{mBean.id}" target="_blank">
+     <h:outputLink value="RetreiveImage?Id=#{mBean.id}" target="_blank">
        <h:graphicImage value="RetreiveImage?Id=#{mBean.id}" width="50" height="75"/>
-       </h:outputLink>
- </center>
+     </h:outputLink>
+  </h:panelGrid>
+  
+   <h:panelGrid columns="2"> 
+    <h:outputLabel for="newfile" value="#{label.newFile}"/>
+    <h:inputFile value="#{mBean.file}" id="newfile" size="8">
+     <f:validator validatorId="fileValidator"/>
+    </h:inputFile>
+   <h:message for="newfile" id="message" infoClass="info" 
+                                            errorClass="err" 
+                                            warnClass="warn"/>
   <h:commandButton id="updateBtn" value="Update" action="#{mBean.updateUser(mBean)}"></h:commandButton>
    <h:message for="updateBtn" style="color: green"></h:message>
   </h:panelGrid>
-  <h:message for="grid"/>
 </center>
   </h:form>
  </f:view>

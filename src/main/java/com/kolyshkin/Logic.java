@@ -225,16 +225,17 @@ public class Logic implements Serializable{
 
 	public static String updateUserRecord(Main updateRecord) {
 		try {
-			SQL= "UPDATE Registration SET userName=?, email=?, password=?, timeStamp=? WHERE id=?";
+			SQL= "UPDATE Registration SET userName=?, email=?, password=?, file=?, timeStamp=? WHERE id=?";
 			prepStatement= DatabaseConnection.getConnection().prepareStatement(SQL);
 			prepStatement.setString(1, updateRecord.getUserName());
 			prepStatement.setString(2, updateRecord.getEmail());
 			prepStatement.setString(3, updateRecord.getPassword());
-			//create a java timestamp object that represents the current time ("current timestamp")
+			inputStream= updateRecord.getFile().getInputStream();
+			prepStatement.setBinaryStream(4, inputStream);
 			Calendar calendar= Calendar.getInstance();
 			Timestamp timeStamp= new Timestamp(calendar.getTime().getTime());
-			prepStatement.setTimestamp(4, timeStamp);
-			prepStatement.setInt(5, updateRecord.getId());
+			prepStatement.setTimestamp(5, timeStamp);
+			prepStatement.setInt(6, updateRecord.getId());
 			prepStatement.executeUpdate();
 			System.out.println("User updated Successfully!");
             FacesMessage message= new FacesMessage("User updated!");

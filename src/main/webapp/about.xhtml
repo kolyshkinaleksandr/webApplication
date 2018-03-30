@@ -11,16 +11,17 @@
   <f:view locale="#{mBean.locale}">
    <h:form>
 
-   <p class="head">Application issues:</p>
+   <p class="head"><h:outputLabel value="#{label.appFeatures}"/></p>
    <ul>
     <li> 1.Choose language.</li>
-    <li> 2.View 2 picture sliders: first automatic with left and right controll buttons, second slider is manual with active dots, which you can press and control left-right buttons.</li>
-    <li> 3.Currency conversion. Convert Great Britain pound, Euro, US dollar or Russian rubl to Ukrainian gryvna.</li>
-    <li> 4.User registration. Enter user's registration information, after successful registration user receives welcome email on specified mailbox.</li> 
-    <li> 5.User log in. You can enter user or administrator account. Enter your user name and password- to access user's page. User can go through quiz from his/her page. 
+    <li> 2.Source code archive download. You can do it from 'Contacts' section of start page.</li>
+    <li> 3.View 2 picture sliders: first automatic with left and right controll buttons, second slider is manual with active dots, which you can press and control left-right buttons.</li>
+    <li> 4.Currency conversion. Convert Great Britain pound, Euro, US dollar or Russian rubl to Ukrainian gryvna.</li>
+    <li> 5.User registration. Enter user's registration information, after successful registration user receives welcome email on specified mailbox.</li> 
+    <li> 6.User log in. You can enter user or administrator account. Enter your user name and password- to access user's page. User can go through quiz from his/her page. 
            Enter user name: Kolyshkin and password: 12345- to access administrator's page. You can view all registerd users here and also add new users, edit, delete any user.</li>
    </ul>
- 
+ <h:commandLink value="#{label.source}" action="#{logic.redirect}" style="color: red;"></h:commandLink>
   <h:panelGrid columns="1" style="margin: right">
     <h:commandLink value="#{label.signUp}" action="signUp"/> 
     <h:commandLink value="#{label.logIn}" action="logIn"/>   
