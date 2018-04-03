@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><h:outputText value="#{label.edit}"/></title>
+<title><h:outputText value="#{label.updLabel}"/></title>
 <link href="css/style.css" rel="stylesheet" style="text/css" media="screen"/>
 </h:head>
 <h:body>
  <f:view locale="#{mBean.locale}">
   <h:form id="editForm" enctype="multipart/form-data">
 <center>
- <div id="header"><h2><h:outputText value="#{label.edit}"/></h2></div>
+ <div id="header"><h2><h:outputLabel value="#{label.update}"/></h2></div>
+ <h:outputFormat value="#{label.updateText}">
+  <f:param value="#{label.userName}"/>
+  <f:param value="#{label.email}"/>
+  <f:param value="#{label.password}"/>
+  <f:param value="#{label.file}"/>
+ </h:outputFormat>
  <h:panelGrid columns="3">
    <h:outputLabel for="userName" value="#{label.updName}"/>
     <h:inputText id="userName" value="#{mBean.userName}"></h:inputText>
@@ -25,23 +32,25 @@
     <h:inputText id="grid" value="#{mBean.password}"></h:inputText>
    <h:message for="password"/>
    
-   <h:outputLabel for="file" value="#{label.file}"/> 
-     <h:outputLink value="RetreiveImage?Id=#{mBean.id}" target="_blank">
-       <h:graphicImage value="RetreiveImage?Id=#{mBean.id}" width="50" height="75"/>
-     </h:outputLink>
-  </h:panelGrid>
-  
-   <h:panelGrid columns="2"> 
+   <h:outputLabel for="file" value="#{label.file}"/>
+   <h:outputLink id="file" value="RetreiveImage?Id=#{mBean.id}" target="_blank">
+     <h:graphicImage value="RetreiveImage?Id=#{mBean.id}" width="60" height="75">
+     </h:graphicImage>
+    </h:outputLink>
+  </h:panelGrid>  
+  <h:panelGrid columns="2"> 
     <h:outputLabel for="newfile" value="#{label.newFile}"/>
-    <h:inputFile value="#{mBean.file}" id="newfile" size="8">
-     <f:validator validatorId="fileValidator"/>
-    </h:inputFile>
+       <h:inputFile value="#{mBean.file}" id="newfile" size="7">
+    <f:validator validatorId="fileValidator"/>
+   </h:inputFile>
    <h:message for="newfile" id="message" infoClass="info" 
                                             errorClass="err" 
                                             warnClass="warn"/>
-  <h:commandButton id="updateBtn" value="#{label.btnOK}" action="#{mBean.updateUser(mBean)}"></h:commandButton>
-   <h:message for="updateBtn" style="color: green"></h:message>
   </h:panelGrid>
+  <h:commandButton id="updateBtn" value="#{label.btnOK}" action="#{mBean.updating(mBean)}"></h:commandButton>
+   <h:message for="updateBtn" style="color: green"></h:message>
+
+  <h:message for="grid"/>
 </center>
   </h:form>
  </f:view>

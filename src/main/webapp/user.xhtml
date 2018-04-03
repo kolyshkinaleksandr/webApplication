@@ -15,6 +15,7 @@
  <h2 style="margin-left: -5%"><h:outputLabel value="#{label.userPg}"/></h2>
 </div>
    <h:form id="userForm">
+ <h:link value="#{label.update}" outcome="userUpdate" style="margin-left: 70%"/>
     <h3><h:outputLabel value="#{label.welcome }"/>
     <h:outputText value="#{mBean.userName} "/><h:outputLabel value="#{label.toPage}"/></h3>
     <h:outputLabel value="#{label.emailMessage}" rendered="#{logic.show}"/>

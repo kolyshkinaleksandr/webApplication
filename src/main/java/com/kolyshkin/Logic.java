@@ -117,6 +117,12 @@ public class Logic implements Serializable{
 		}
 	  }
 
+	public static void createPassword(Main pass){
+		 int Base= 36;
+		 int Length= 8;
+	pass.setPassword(Long.toString((long)(Math.pow(Base, Length)* Math.random()), Base));
+	 }
+
 	public static String insertNewData(Main insertUser){
 		int c= 0;
 		try {
@@ -126,6 +132,7 @@ public class Logic implements Serializable{
             prepStatement= connection.prepareStatement(SQL);
             prepStatement.setString(1, insertUser.getUserName());
             prepStatement.setString(2, insertUser.getEmail());
+            createPassword(insertUser);
             prepStatement.setString(3, insertUser.getPassword());
             System.out.println(insertUser.getFile().getName());
             inputStream = insertUser.getFile().getInputStream();
@@ -250,6 +257,33 @@ public class Logic implements Serializable{
 		return "administration";
 	}
 
+	public static String updateUser_Record(Main updateRecord) {
+		try {
+			SQL= "UPDATE Registration SET userName=?, email=?, password=?, file=?, timeStamp=? WHERE id=?";
+			prepStatement= DatabaseConnection.getConnection().prepareStatement(SQL);
+			prepStatement.setString(1, updateRecord.getUserName());
+			prepStatement.setString(2, updateRecord.getEmail());
+			prepStatement.setString(3, updateRecord.getPassword());
+			InputStream input= updateRecord.getFile().getInputStream();
+			prepStatement.setBinaryStream(4, input);
+			Calendar calendar= Calendar.getInstance();
+			Timestamp timeStamp= new Timestamp(calendar.getTime().getTime());
+			prepStatement.setTimestamp(5, timeStamp);
+			prepStatement.setInt(6, updateRecord.getId());
+			prepStatement.executeUpdate();
+			System.out.println("User updated Successfully!");
+            FacesMessage message= new FacesMessage("User's information updated!");
+            FacesContext.getCurrentInstance().addMessage("adminForm: head", message);
+            EmailSending(updateRecord);
+			prepStatement.close();
+		} catch (SQLException sqlEx) {
+			sqlEx.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "userUpdate";
+	}
+
 	public static String insertNewUser(Main newUser){
 		try {
 			Connection connection= DatabaseConnection.getConnection();
@@ -330,7 +364,7 @@ public class Logic implements Serializable{
 		            "<p>"+
 		            "You successfully sign up to Kolyshkin Aleksandr's web application! <br>"
 			        +"\n <em>Your user name:</em> <strong>" +emailSent.getUserName()+"</strong> , <br>"+
-			         "\n <em>your password:</em> <strong>"+emailSent.getPassword()+"</strong> ."
+			         "\n <em>your password:</em> <strong>" +emailSent.getPassword()+"</strong> ."
 			        +"</p>";
 			message.setContent(mailbody, "text/html;charset=utf-8");
 			message.saveChanges();

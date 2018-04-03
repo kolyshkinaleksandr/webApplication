@@ -14,12 +14,12 @@
 <style>
  .info{color: blue;}
  .err{color: red;}
+ input:focus{background-color: inactiveborder;}
 </style>
 </h:head>
 <h:body>
  <f:view locale="#{mBean.locale}">
-  <h:form>
-
+  <h:form id="head">
   <center>
     <div id="header">                                  
      <h:selectOneRadio value="#{mBean.language}" onclick="submit()" immediate="true">
@@ -35,27 +35,9 @@
              </ul>
           </div>                
     </div>
-
- <div id="slider">
-  <a class="next"> &#10097; </a>
-  <a class="prev"> &#10096; </a>
-  <ul>
-     <li><img src="images/cloud.jpg" alt="pic1" /></li>
-     <li><img src="images/pic-1.jpg" alt="pic2" /></li>
-     <li><img src="images/pic-2.jpg" alt="pic3" /></li>
-     <li><img src="images/pic-3.jpg" alt="pic4" /></li>
-     <li><img src="images/pic-4.jpg" alt="pic5" /></li>
-     <li><img src="images/pic-5.jpg" alt="pic6" /></li>
-     <li><img src="images/pic-6.jpg" alt="pic7" /></li>
-     <li><img src="images/pic-7.jpg" alt="pic8" /></li>
-     <li><img src="images/pic-8.jpg" alt="pic9" /></li>
-     <li><img src="images/css.jpg" alt="pic10" /></li>
-  </ul>
- </div>
- <br />
+ <br/>
  </center>
  </h:form>
- 
 <fieldset><legend><h:outputLabel value="#{label.convert}"/></legend>
 <center>
  <h:form id="converter">
@@ -77,6 +59,25 @@
                                          infoClass="info"/>
   </h:panelGrid>                                     
 </h:form></center></fieldset>
+  <center>
+ <div id="slider">
+  <a class="next"> &#10097; </a>
+  <a class="prev"> &#10096; </a>
+  <ul>
+     <li><img src="images/cloud.jpg" alt="pic1" /></li>
+     <li><img src="images/pic-1.jpg" alt="pic2" /></li>
+     <li><img src="images/pic-2.jpg" alt="pic3" /></li>
+     <li><img src="images/pic-3.jpg" alt="pic4" /></li>
+     <li><img src="images/pic-4.jpg" alt="pic5" /></li>
+     <li><img src="images/pic-5.jpg" alt="pic6" /></li>
+     <li><img src="images/pic-6.jpg" alt="pic7" /></li>
+     <li><img src="images/pic-7.jpg" alt="pic8" /></li>
+     <li><img src="images/pic-8.jpg" alt="pic9" /></li>
+     <li><img src="images/css.jpg" alt="pic10" /></li>
+  </ul>
+ </div>
+ <br />
+ </center>
 </f:view>
 <br/>
 <div class="container">

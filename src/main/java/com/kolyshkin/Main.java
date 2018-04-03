@@ -142,6 +142,9 @@ public String editUser(int userId){
 public String updateUser(Main newUser){
 	return Logic.updateUserRecord(newUser);
 }
+public String updating(Main updating){
+	return Logic.updateUser_Record(updating);
+}
 public String deleteUser(int userId){
 	return Logic.deleteUser(userId);
 }
